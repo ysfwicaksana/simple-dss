@@ -3,6 +3,8 @@
   <hr>
 
   <p style="color:red;font-weight:bold">Nilai yang tertinggi merupakan penerima beasiswa tahun akademik <?php echo $ta ?>/<?php echo $ta + 1 ?></p>
+
+  
 <table id="table" style="border-collapse:collapse;border:1px solid black" border="1">
   <thead>
     <tr>

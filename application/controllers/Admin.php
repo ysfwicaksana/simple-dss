@@ -194,7 +194,7 @@ class Admin extends CI_Controller {
 
   public function siswa_delete($id)
   {
-     $this->crud->delete('users','id',$id);
+     $this->crud->delete('siswa','id',$id);
      $this->session->set_flashdata('notify',notify('success','Siswa berhasil dihapus'));
      redirect('admin/siswa');
 
@@ -432,7 +432,7 @@ class Admin extends CI_Controller {
                                 ->from('matrik_keputusan')
                                 ->join('beasiswa','beasiswa.id = matrik_keputusan.beasiswa')
                                 ->join('siswa','siswa.id = beasiswa.siswa')
-                                ->where('beasiswa.tahun_akademik',$this->input->post('ta'))->order_by('siswa.nis','ASC')->get()->result();
+                                ->where('beasiswa.tahun_akademik',$this->input->post('ta'))->order_by('siswa.id','asc')->get()->result();
 
       $maxMin = $this->maxMin($this->input->post('ta'));
 
@@ -454,6 +454,8 @@ class Admin extends CI_Controller {
         $tanggungan = $maxMin->min_tanggungan / $value->tanggungan;
         $jarak = $maxMin->min_jarak / $value->jarak_rumah;
 
+
+
         //Pemberian Bobot Kriteria berdasarkan tingkat kepentingan dari kriteria
         // 1 = C1 sangat tinggi
         // 0.6 = C2 Sedang
@@ -464,17 +466,16 @@ class Admin extends CI_Controller {
 
         $nilai = [
 
-          'nilai' => round($res,2)
+          'nilai' => round($res,3)
         ];
 
 
         $hasil = $biodata + $nilai;
 
-        array_push($hasil2,$hasil);
+       array_push($hasil2,$hasil);
 
 
       }
-
 
       $data = [
         'title' => 'Hasil Penentuan Beasiswa',
@@ -531,6 +532,8 @@ class Admin extends CI_Controller {
       $hasil = $biodata + $nilai;
 
       array_push($hasil2,$hasil);
+
+      // print_r($res);
 
 
     }

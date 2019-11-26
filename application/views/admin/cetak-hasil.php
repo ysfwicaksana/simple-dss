@@ -1,7 +1,7 @@
 <h2>
   <center>
     <?php echo $title ?><br>
-    SMK KARYA BHAKTI 2 BEKASI
+    SMK KARYA BHAKTI
   </center>
 </h2>
 

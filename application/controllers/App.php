@@ -1,3 +1,4 @@
+
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
@@ -32,11 +33,9 @@ class App extends CI_Controller {
 
 			 $this->session->set_userdata($createSession);
 
-			if ($this->session->level == 1) {
+			
 				redirect('admin');
-			} else {
-				redirect('user');
-			}
+
 
 		 } else {
 			 $this->session->set_flashdata('notify',notify('danger','Username atau Password salah'));
